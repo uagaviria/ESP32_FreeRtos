@@ -431,6 +431,76 @@ eventos, sus respuestas y los compromisos
 temporales antes de asignar las prioridades de
 ejecución.
 
+# Problemáticas de la concurrencia
+* Cuando varios procesos ejecutan simultáneamente,
+puede ocurrir que quieran usar un mismo recurso al
+mismo tiempo. En realidad, el acceso no es
+simultáneo sino que ocurre un cambio de contexto
+entre que el primer proceso empieza y termina de
+modificar el recurso.
+* Dos tareas quieren escribir a una UART a la vez, los
+mensajes se entremezclan.
+* Un proceso modifica una variable de configuración
+mientras otro la lee, no se sabe en qué estado va a
+quedar el recurso.
+* Operaciones de read- modify- write ( x 1= (1<<7));
+* Estos problemas se evitan turnando el acceso al
+recurso.
+
+# Cómo encarar un diseño con RTOS
+# Analizar el sistema a implementar
+* Lo primero es tener en claro cuáles son las entradas
+del sistema, sus respectivas respuestas y los
+compromisos temporales asociados.
+* Amén de las prioridades, de este análisis surgirán
+los tiempos de bloqueo de las operaciones de
+sincronismo.
+
+# Identificar áreas independientes
+* Buscar áreas del programa que se puedan
+programar independientemente de las demás.
+* Estas áreas son candidatas a tener su propia tarea.
+* Tener presente que si una tarea está completamente
+anidada dentro de otra, puede ser una simple función y
+no necesita una tarea.
+* No todo es una tarea!
+* Las tareas deben tener poca dependencia entre
+ellas, una relación complicada entre ellas es síntoma
+de un mal diseño y complica el posterior
+mantenimiento del software.
+
+# Asignar prioridades a las tareas
+* Se debe tener en claro qué eventos tienen requisitos
+temporales estrictos y cuáles relajados.
+* Ayuda pensar en la superposición de todos los
+eventos y determinar cuales deben ser atendidos
+primero.
+* Considerar el caso de semáforos y colas
+* Cuando se libera un semáforo, es más importante la
+atención del evento o la tarea que lo señaliza tiene
+todavía trabajo por hacer?
+* Cuando un productor escribe datos en una cola, el
+consumidor debe pasar a ejecución en ese momento o
+más tarde, cuando el productor ceda el CPU?
+* Cuidado con el starvation!
+
+# Otros problemas de la concurrencia
+* Reentrancia
+* Si una tarea se va a instanciar varias veces, no debe
+guardar sus datos en variables globales, ya que todas las
+instancias ven la misma variable y podrían corromperla.
+* Las variables locales están en el stack de cada instancia.
+* A la condición de no usar variables globales y permitir la
+reentrancia se la llama “thread- safe”.
+* Carreras críticas (race conditions)
+* Si varias tareas usan una misma variable (p. ej un
+contador global), el acceso al mismo debe ser mutex.
+* Un acceso no mutex a un contador puede hacer que el
+código en cuestión ejecute más o menos veces que lo
+que debería.
+
+https://www.freertos.org/croutine.html
+
 
 
 
