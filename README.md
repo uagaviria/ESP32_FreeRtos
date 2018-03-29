@@ -102,11 +102,84 @@ de eventos aún cuando se use un RTOS.
 * El RTOS absorbe el manejo de temporizadores y esperas, de
 modo que hace más facil al programador el manejo del tiempo.
 * Tarea Idle
-+ Cuando ninguna de las tareas requiere del procesador, el sistema
+* Cuando ninguna de las tareas requiere del procesador, el sistema
 ejecuta una tarea llamada idle u ociosa. Esto me permite
 fácilmente contabilizar el nivel de ocupación del CPU, poner al
 mismo en modo de bajo consumo o correr cualquier tarea que
 pudiera ser de utilidad para el sistema cuando no debe atender
 ninguno de sus eventos.
+* Multitarea
+* Simplifica sobremanera la programación de sistemas con
+varias tareas.
+* Escalabalidad
+* Al tener ejecución concurrente de tareas se pueden
+agregar las que haga falta, teniendo el único cuidado de
+insertarlas correctamente en el esquema de ejecución del
+sistema.
+* Mayor reutilizabilidad del código
+* Si las tareas se diseñan bien (con pocas o ninguna
+dependencia) es más fácil incorporarlas a otras
+aplicaciones.
 
+# La letra chica 1
+* Se gasta tiempo del CPU en determinar en todo
+momento qué tarea debe estar corriendo. Si el
+sistema debe manejar eventos que ocurren
+demasiado rápido tal vez no haya tiempo para esto.
+* Se gasta tiempo del CPU cada vez que debe
+cambiarse la tarea en ejecución.
+* Se gasta memoria de código para implementar la
+funcionalidad del RTOS.
+* Se gasta memoria de datos en mantener una pila y
+un TCB (bloque de control de tarea) por cada tarea
+* El tamaño de estas pilas suele ser configurable POR
+TAREA, lo cual mitiga este impacto.
+
+* Finalmente, debe hacerse un análisis de tiempos,
+eventos y respuestas más cuidadoso. Al usar un
+RTOS ya no es el programador quién decide cuándo
+ejecutar cada tarea, sino el scheduler. Cometer un
+error en el uso de las reglas de ejecución de tareas
+puede llevar a que los eventos se procesen fuera del
+tiempo especificado o que no se procesen en lo
+absoluto.
+* A la luz de los beneficios mencionados, en el caso
+de que la plataforma de hardware lo permita y el
+programador esté capacitado no hay razones para
+no usar un RTOS.
+
+# Tipo de tareas que vamos a implementar en
+una aplicación de tiempo real
+* Tareas periódicas
+* Atienden eventos que ocurren constantemente y a una
+frecuencia determinada. P. ej, destellar un led.
+* Tareas aperiódicas
+* Atienden eventos que no se sabe cuándo van a darse.
+Estas tareas están inactivas (bloqueadas) hasta que no
+ocurre el evento de interés. P. ej, una parada de
+emergencia.
+* Tareas de procesamiento contínuo
+* Son tareas que trabajan en régimen permanente. P. ej,
+muestrear un buffer de recepción en espera de datos
+para procesar.
+* Estas tareas deben tener prioridad menor que las otras,
+ya que en caso contrario podrían impedir su ejecución.
+
+# Caso de estudio
+* Tarea de la primera práctica
+* Destellar un led a una frecuencia determinada.
+* Muestrear un pulsador y reflejar su estado en un led
+(tarea periódica).
+* Contar pulsaciones y destellar un led esa misma cantidad
+de veces (tarea aperiódica).
+
+#Por qué FreeRTOS?
+
+# Es de código abierto
+
+* No hay costo de implementación.
+* El código está ampliamente comentado, es muy
+sencillo verificar cómo hace su trabajo.
+* Es relativemente sencillo de portar a plataformas
+nuevas.
 
