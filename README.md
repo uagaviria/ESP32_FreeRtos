@@ -30,3 +30,39 @@ tarea en ejecución debe reemplazarse por alguna
 otra tarea. A este reemplazo se le llama cambio de
 contexto de ejecución.
 
+# Más contexto
+* Se llama contexto de ejecución al conjunto de
+recursos que identifican el estado de ejecución de
+una tarea:
+* IP (instruction pointer)
+* SP (stack pointer)
+* Registros del CPU
+* Contenido de la pila en uso
+
+# Cambiemos de contexto
+* Cuando el scheduler determina que debe cambiarse
+el contexto de ejecución, invoca a otro componente
+del OS llamado dispatcher para que guarde el
+contexto completo de la tarea actual y lo reemplace
+por el de la tarea entrante.
+* Por esta razón debe reservarse un bloque de
+memoria de datos para cada tarea. Esto limita la
+cantidad de tareas simultáneas del sistema (pueden
+sin embargo eliminarse y crearse nuevas tareas en
+tiempo de ejecución).
+* Estos cambios de contexto se realizan de forma
+transparente para la tarea, no agregan trabajo al
+programador. Cuando la tarea retoma su ejecución
+no muestra ningún síntoma de haberla pausado
+alguna vez.
+* Los OS trabajan en dos modos:
+* En modo cooperativo, estos cambios solo ocurren
+cuando la tarea en ejecución relega voluntariamente el
+uso del CPU.
+* En cambio en modo preemptive el scheduler tiene la
+facultad de remover una tarea sin el consentimiento de la
+misma.
+* En este caso debe preveerse que algunas operaciones no
+deben ser interrumpidas, a estos pasajes del programa se los
+llama secciones críticas. Los OS permiten inhibir de este modo
+8 RTOS - Sistemas Embebidos 2010 - FI- los cambios de contexto cuando es necesario.
