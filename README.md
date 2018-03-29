@@ -285,4 +285,30 @@ vTaskDelete(NULL);
 } 
 
 
+```php
+<?php
+/**
+* Nombre del archivo
+* Ruta:              /ruta/archivo
+* Fecha Creación:    18/Ene/2014
+*
+* Descripción breve
+*
+* Descripción extensa (opcional)
+*
+* @author           Fulanito de Tal <fulanito@example.com>
+* @copyright        2007 Fulanito de Tal
+* @license          GPL 2 or later
+* @version          2007-02-06
+* @link             http://www.example.org
+*
+* Revisiones:
+*       Bob (18/Ene/2014)   - Descripción
+*       Susi (18/Ene/2014)  - Descripción Método modificado
+*                           - Otro cambio  
+*/
+?>
+```
+
+
 
