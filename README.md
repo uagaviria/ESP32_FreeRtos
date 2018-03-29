@@ -121,7 +121,7 @@ sistema.
 dependencia) es más fácil incorporarlas a otras
 aplicaciones.
 
-# La letra chica 1
+# La letra chica 
 * Se gasta tiempo del CPU en determinar en todo
 momento qué tarea debe estar corriendo. Si el
 sistema debe manejar eventos que ocurren
@@ -182,4 +182,39 @@ de veces (tarea aperiódica).
 sencillo verificar cómo hace su trabajo.
 * Es relativemente sencillo de portar a plataformas
 nuevas.
+
+# Es fácil de implementar
+
+* Hay mucha documentación disponible.
+* Libro de texto escrito por uno de los diseñadores del
+sistema.
+* Incluye una demostración de sus funciones para cada
+plataforma en la que está soportado.
+* Nutrida comunidad de usuarios (ver
+http://sistemasembebidos.com.ar/foro
+)
+* Hay una opción con soporte comercial.
+* Hay una opción con certificación SIL-3 para
+sistemas de misión critica.
+
+# Está pensado para microcontroladores
+
+* Está escrito mayormente en C, salvo las partes
+específicas de cada plataforma.
+* Es liviano en tamaño de código y en uso de
+memoria RAM.
+
+# Primera mirada a FreeRTOS
+
+* Es un mini kernel de tiempo real que puede trabajar en modos
+cooperativo, preemptive o mixto.
+* Mini kernel significa que provee los servicios mínimos e
+indispensables
+* Permite compilar solo las funciones que se vayan a usar,
+acotando así su impacto en la memoria de código.
+* Se puede definir y acotar en tiempo de compilación el uso de
+memoria de datos por parte del sistema.
+* Ofrece funciones de temporización, de comunicación entre
+tareas, de sincronización entre tareas e interrupciones, y de
+definición de secciones críticas
 
