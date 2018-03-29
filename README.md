@@ -190,9 +190,7 @@ nuevas.
 sistema.
 * Incluye una demostración de sus funciones para cada
 plataforma en la que está soportado.
-* Nutrida comunidad de usuarios (ver
-http://sistemasembebidos.com.ar/foro
-)
+* Nutrida comunidad de usuarios 
 * Hay una opción con soporte comercial.
 * Hay una opción con certificación SIL-3 para
 sistemas de misión critica.
@@ -217,4 +215,19 @@ memoria de datos por parte del sistema.
 * Ofrece funciones de temporización, de comunicación entre
 tareas, de sincronización entre tareas e interrupciones, y de
 definición de secciones críticas
+
+# Algunas opciones de configuración
+
+* FreeRTOSConfig.h
+* configUSE_PREEMPTION
+* configCPU_CLOCK_HZ
+* configTICK_RATE_HZ
+* configMAX_PRIORITIES
+* configMINIMAL_STACK_SIZE
+* configTOTAL_HEAP_SIZE
+* configUSE_USE_MUTEXES
+* configUSE_CO_ROUTINES
+* #define INCLUDE_vTaskDelete 1
+
+
 
