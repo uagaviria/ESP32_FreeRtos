@@ -268,6 +268,9 @@ compartido.
 # Ejemplo 1: 
 Dos tareas de igual prioridad se apropian
 del CPU, pero son administradas por el scheduler.
+
+# Código
+/**
 void vTask1( void *pvParameters )
 {
 // Punto de entrada - Seccion de inicializacion
@@ -282,33 +285,7 @@ for( ul = 0; ul < mainDELAY_LOOP_COUNT; ul++ ) { }
 // La tarea NUNCA debe pasar de este punto, si lo hiciera debe ser
 eliminada
 vTaskDelete(NULL);
-} 
-
-
-```php
-<?php
-/**
-* Nombre del archivo
-* Ruta:              /ruta/archivo
-* Fecha Creación:    18/Ene/2014
-*
-* Descripción breve
-*
-* Descripción extensa (opcional)
-*
-* @author           Fulanito de Tal <fulanito@example.com>
-* @copyright        2007 Fulanito de Tal
-* @license          GPL 2 or later
-* @version          2007-02-06
-* @link             http://www.example.org
-*
-* Revisiones:
-*       Bob (18/Ene/2014)   - Descripción
-*       Susi (18/Ene/2014)  - Descripción Método modificado
-*                           - Otro cambio  
-*/
-?>
-```
+}*/
 
 
 
