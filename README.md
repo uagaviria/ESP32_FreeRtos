@@ -332,7 +332,7 @@ vTaskDelay (500 / portTICK_RATE_MS);
 * void vTaskDelayUntil (portTickType * pxPreviousWakeTime, portTickType xTimeIncrement);
 
 Mientras que vTaskDelay () especifica un tiempo de activación relativo al momento en que se llama a la función, vTaskDelayUntil () especifica el tiempo absoluto (exacto) en el que desea desbloquear. 
-Creo que debería utilizar una etiqueta `<addr>` aquí.
+Aquí un ejemplo de como puede utilizar el resaltado de sintaxis [GitHub Flavored Markdown][GFM]:
 
 ```C++
 #include <Arduino.h>
