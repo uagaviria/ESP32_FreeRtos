@@ -330,13 +330,15 @@ El siguiente código nos muestra que podemos correr nuestro programa en cualquier
 void loop1(void *pvParameters) {
   while (1) {
      Serial.println("loop1");
-     delay(1000);
+     //vTaskDelay(1000);
+     delay(100);
   }
 }
 
 void loop2(void *pvParameters) {
   while (1) {
      Serial.println("loop2");
+     //vTaskDelay(5000);
      delay(300);
   }
 }
@@ -344,6 +346,7 @@ void loop2(void *pvParameters) {
 void loop3(void *pvParameters) {
   while (1) {
      Serial.println("loop3");
+     //vTaskDelay(5000);
      delay(4000);
   }
 }
@@ -357,7 +360,8 @@ void setup() {
 
 void loop() {
    Serial.println("loop0");
-   delay(5000);
+   delay(4000);
+}
 }
 ```
 
@@ -381,5 +385,37 @@ ejecutarse
 tiempo el scheduler va a retirar la tarea en ejecución solo si
 hubiera una de igual prioridad en condiciones de
 ejecutarse.
+
+* Recordar: “la tarea de mayor prioridad en
+condiciones de ejecutarse” (en estado Ready)
+* Si hubiere varias tareas de la misma prioridad en este
+estado, el kernel las ejecuta secuencialmente a todas.
+* Si hubiere alguna(s) de menor prioridad, no va(n) a recibir
+tiempo alguno hasta que todas las de mayor prioridad salgan
+del estado Ready.
+* Se define una frecuencia llamada configTICK_RATE_HZ. La inversa es el lapso que el scheduler asigna a cada
+tarea para ejecutarse antes de verificar si debe quitarla
+del estado Running.
+* La definición de esta frecuencia es un punto importante
+del diseño.
+
+# Consideraciones de diseño
+* Siempre que varios procesos deban ocurrir en
+paralelo, son candidatos a ser tareas.
+* Como primer criterio para asignar prioridades, se
+sugiere preguntarse que evento se debe atender y
+cuál puede esperar si ambos ocurren
+simultáneamente.
+* Se debe evitar el hambreado de las tareas de menor
+prioridad.
+* Esto no es necesariamente un error, si la tarea de mayor
+prioridad tiene trabajo que hacer, es correcto que no le de
+paso a las demas.
+* Es importante hacer un análisis detallado de los
+eventos, sus respuestas y los compromisos
+temporales antes de asignar las prioridades de
+ejecución.
+
+
 
 
