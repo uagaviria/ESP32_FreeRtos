@@ -321,6 +321,7 @@ El siguiente código nos muestra que podemos correr nuestro programa en cualquier
 
 ```C++
 #include <Arduino.h>
+const portTickType xDelay = 5000 / portTICK_RATE_MS;
 #if CONFIG_FREERTOS_UNICORE
 #define ARDUINO_RUNNING_CORE 0
 #else
@@ -330,8 +331,7 @@ El siguiente código nos muestra que podemos correr nuestro programa en cualquier
 void loop1(void *pvParameters) {
   while (1) {
      Serial.println("loop1");
-     //vTaskDelay(1000);
-     delay(100);
+     vTaskDelay (xDelay); //Ejecuta esta tarea cada 5000 milisegundos
   }
 }
 
@@ -361,7 +361,6 @@ void setup() {
 void loop() {
    Serial.println("loop0");
    delay(4000);
-}
 }
 ```
 
