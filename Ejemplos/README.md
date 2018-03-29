@@ -32,19 +32,19 @@ La transición de no funcionando a funcionado se denomina "switched in" o "swappe
 
 # Creación de Tareas
 # Función de la API xTaskCreate()
-Esta función es sirve para crear tareas.
+Esta función sirve para crear tareas.
 
 ```C++
 portBASE_TYPE xTaskCreate( pdTASK_CODE pvTaskCode, const signed char * const pcName, unsigned short usStackDepth, void *pvParameters, unsigned portBASE_TYPE uxPriority, xTaskHandle *pxCreatedTask);
 ```
-pvTaskCode: es un puntero a la función que implementa la tarea
-pcName: un nombre descriptivo de la tarea. Sólo sirver para debug
+* pvTaskCode: es un puntero a la función que implementa la tarea
+* pcName: un nombre descriptivo de la tarea. Sólo sirver para debug
 usStackDepth: cada tarea tiene una pila de programa propia en el kernel, este parámetro determina el tamaño de la pila (en words).
 El tamaño de la pila para la tareas en reposo se define mediante al constante de configMINIMAL_STACK_SIZE.
-pvParameters: son los parámetros que necesita la tarea
-uxPriority: define la prioridad de la función de 0 a configMAX_PRIORITIRES-1
+* pvParameters: son los parámetros que necesita la tarea
+* uxPriority: define la prioridad de la función de 0 a configMAX_PRIORITIRES-1
 Se recomienda usar el número de prioridad inferior posible para ahorrar RAM.
-pxCreatedTask: para pasar un argumento a la tarea. Si no se utilizan argumentos, se pone NULL.
+* pxCreatedTask: para pasar un argumento a la tarea. Si no se utilizan argumentos, se pone NULL.
 
 Hay dos posibles valores de retorno:
 
