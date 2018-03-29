@@ -269,6 +269,7 @@ compartido.
 Dos tareas de igual prioridad se apropian
 del CPU, pero son administradas por el scheduler.
 Es increible cuando ejecute este ejemplo en consola, sabiendo por mi experiencia que cada for next siempre se ejecuta por separado y aqui las dos tareas tienen prioridad. como si estuvieran en paralelo.
+# Importante: Como el núcleo arduino del ESP32, se ejecuta sobre FreeRTOS y puede llamar a las API directamente en el boceto Arduino, no es necesaria una biblioteca adicional.
 
 # Código
 
