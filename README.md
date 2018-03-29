@@ -268,6 +268,7 @@ compartido.
 # Ejemplo 1: 
 Dos tareas de igual prioridad se apropian
 del CPU, pero son administradas por el scheduler.
+Es increible cuando ejecute este ejemplo en consola, sabiendo por mi experiencia que cada for next siempre se ejecuta por separado y aqui las dos tareas tienen prioridad. como si estuvieran en paralelo.
 
 # Código
 
@@ -278,9 +279,9 @@ void setup() {
   delay(1000);
 
   xTaskCreate(
-                    taskOne,          /* Task function. */
-                    "TaskOne",        /* String with name of task. */
-                    10000,            /* Stack size in words. */
+                    taskOne,          /* Función de tarea.*/
+                    "TaskOne",        /* Cadena con el nombre de la tarea. */
+                    10000,            /* Tamaño de la pila en palabras*/
                     NULL,             /* Parameter passed as input of the task */
                     1,                /* Priority of the task. */
                     NULL);            /* Task handle. */
