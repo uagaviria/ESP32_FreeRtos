@@ -327,12 +327,13 @@ control del CPU mientras este tiempo no expira.
 function to be available.
 * Uso:
 vTaskDelay (500 / portTICK_RATE_MS);
+* Puedes ver mas informacion [aquí:](http://web.ist.utl.pt/~ist11993/FRTOS-API/group___task_ctrl.html#vTaskDelay)
 
 # Recursos de software 2 vTaskDelayUntil()
 * void vTaskDelayUntil (portTickType * pxPreviousWakeTime, portTickType xTimeIncrement);
 
 Mientras que vTaskDelay () especifica un tiempo de activación relativo al momento en que se llama a la función, vTaskDelayUntil () especifica el tiempo absoluto (exacto) en el que desea desbloquear. 
-Puedes ver mas informacion [aquí:](http://web.ist.utl.pt/~ist11993/FRTOS-API/group___task_ctrl.html#vTaskDelayUntil)
+* Puedes ver mas informacion [aquí:](http://web.ist.utl.pt/~ist11993/FRTOS-API/group___task_ctrl.html#vTaskDelayUntil)
 
 ```C++
 #include <Arduino.h>
