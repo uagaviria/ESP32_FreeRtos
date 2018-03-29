@@ -319,7 +319,7 @@ void Tarea2( void * parameter)
 
 El siguiente código nos muestra que podemos correr nuestro programa en cualquiera de los dos nucleos del ESP32. y correr las tareas en los tiempos que mas nos convenga. los delay pueden ser modificados para esto. si corres el programa en consola te daras cuenta de lo que hablo.
 
-# Recursos de software # 1
+# Recursos de software # 1 vTaskDelay()
 * void vTaskDelay( portTickType xTicksToDelay );
 * Produce una demora en la tarea que la llama. Cede el
 control del CPU mientras este tiempo no expira.
@@ -328,20 +328,10 @@ function to be available.
 * Uso:
 vTaskDelay (500 / portTICK_RATE_MS);
 
-# Recursos de software 2
-* void vTaskDelayUntil( portTickType
-*pxPreviousWakeTime, portTickType xTimeIncrement );
-* INCLUDE_vTaskDelayUntil must be defined as 1 for this
-function to be available.
-* Asegura un tiempo constante entre sucesivos llamados a esta
-función.
-* Cada vez que se la llama actualiza *pxPreviousWakeTime
-* Uso:
-portTickType xLastWakeTime;
-xLastWakeTime = xTaskGetTickCount();
-for( ;; ) {
-vTaskDelayUntil( &xLastWakeTime, xFrequency );
-} 
+# Recursos de software 2 vTaskDelayUntil()
+* void vTaskDelayUntil (portTickType * pxPreviousWakeTime, portTickType xTimeIncrement);
+
+Mientras que vTaskDelay () especifica un tiempo de activación relativo al momento en que se llama a la función, vTaskDelayUntil () especifica el tiempo absoluto (exacto) en el que desea desbloquear. 
 
 ```C++
 #include <Arduino.h>
