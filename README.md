@@ -263,7 +263,26 @@ dejan de ser válidas.
 visibilidad de variables => se puede compartir memoria
 entre las tareas usando variables globales.
 * En este caso se debe cuidar el acceso a este recurso
-compartido. 25 RTOS - Sistemas Embebidos 
+compartido. 
+
+# Ejemplo 1: 
+Dos tareas de igual prioridad se apropian
+del CPU, pero son administradas por el scheduler.
+void vTask1( void *pvParameters )
+{
+// Punto de entrada - Seccion de inicializacion
+const char *pcTaskName = "Task 1 is running\n";
+volatile unsigned long ul;
+// Cuerpo de la tarea
+for( ;; )
+{
+vPrintString( pcTaskName ); // envía el string a la consola del IDE
+for( ul = 0; ul < mainDELAY_LOOP_COUNT; ul++ ) { }
+}
+// La tarea NUNCA debe pasar de este punto, si lo hiciera debe ser
+eliminada
+vTaskDelete(NULL);
+} 
 
 
 
