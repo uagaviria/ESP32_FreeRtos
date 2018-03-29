@@ -278,21 +278,8 @@ void setup() {
   Serial.begin(112500);
   delay(1000);
 
-  xTaskCreate(
-                    taskOne,          /* Función de tarea.*/
-                    "TaskOne",        /* Cadena con el nombre de la tarea. */
-                    10000,            /* Tamaño de la pila en palabras*/
-                    NULL,             /* Parameter passed as input of the task */
-                    1,                /* Priority of the task. */
-                    NULL);            /* Task handle. */
-
-  xTaskCreate(
-                    taskTwo,          /* Task function. */
-                    "TaskTwo",        /* String with name of task. */
-                    10000,            /* Stack size in words. */
-                    NULL,             /* Parameter passed as input of the task */
-                    1,                /* Priority of the task. */
-                    NULL);            /* Task handle. */
+  xTaskCreate(Tarea1,"Tarea1",10000,NULL,1,NULL);
+  xTaskCreate(Tarea2,"Tarea2",10000,NULL,1,NULL);
 
 }
 
@@ -300,33 +287,31 @@ void loop() {
   delay(1000);
 }
 
-void taskOne( void * parameter )
+void Tarea1( void * parameter )
 {
 
     for( int i = 0;i<10;i++ ){
 
-        Serial.println("Hello from task 1");
+        Serial.println("Hola desde la tarea 1");
         delay(1000);
     }
 
-    Serial.println("Ending task 1");
+    Serial.println("Finalizando tarea 1");
     vTaskDelete( NULL );
 
 }
 
-void taskTwo( void * parameter)
+void Tarea2( void * parameter)
 {
 
     for( int i = 0;i<10;i++ ){
 
-        Serial.println("Hello from task 2");
+        Serial.println("Hola desde la tarea 2");
         delay(1000);
     }
-    Serial.println("Ending task 2");
+    Serial.println("Finalizando tarea 2");
     vTaskDelete( NULL );
-    Serial.println(taskCore);
-
-}}
+}
 ```
 
 
