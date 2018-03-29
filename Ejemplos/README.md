@@ -1,4 +1,4 @@
-Task (Tarea)
+# Task (Tarea)
 Se implementan en C y su prototipo tiene que devolver un void y tener como argumento un puntero void:
 void FuncionTask (void *pvParametro);
 
