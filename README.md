@@ -20,3 +20,13 @@ simultáneamente, aunque en realidad sólo pueden hacerlo de a uno
 a la vez (en sistemas con un sólo núcleo, como es el caso general
 de los sistemas embebidos).
 
+# Cómo se administra el tiempo del CPU?
+* El encargado de esta gestión es un componente del
+OS llamado scheduler o programador de tareas. Su
+función es determinar qué tarea debe estar en
+ejecución a cada momento.
+* Ante la ocurrencia de ciertos eventos revisa si la
+tarea en ejecución debe reemplazarse por alguna
+otra tarea. A este reemplazo se le llama cambio de
+contexto de ejecución.
+
