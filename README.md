@@ -89,7 +89,7 @@ STR duros. Luego se da mayor prioridad a la
 atención de los eventos con compromisos
 temporales estrictos.
 
-3 ¿Por qué usar un RTOS?
+# ¿Por qué usar un RTOS?
 * Para cumplir con compromisos temporales estrictos
 * El RTOS ofrece funcionalidad para asegurar que una vez ocurrido
 un evento, la respuesta ocurra dentro de un tiempo acotado. Es
