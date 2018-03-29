@@ -288,5 +288,10 @@ del CPU, pero son administradas por el scheduler.
 *}
 */
 
+```C++
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
 
 
