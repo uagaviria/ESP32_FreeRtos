@@ -67,27 +67,26 @@ deben ser interrumpidas, a estos pasajes del programa se los
 llama secciones críticas. Los OS permiten inhibir de este modo
 8 RTOS - Sistemas Embebidos 2010 - FI- los cambios de contexto cuando es necesario.
 
-El código de configuración y bucle
-Comenzaremos nuestra función de configuración abriendo una conexión en serie, para poder obtener el resultado de nuestro programa de prueba. Esta será nuestra función Arduino regular.
+# ¿Qué es un RTOS?
+* Un RTOS es un sistema operativo de tiempo real.
+* Esto significa que hace lo mismo que un OS común
+pero además me da herramientas para que los
+programas de aplicación puedan cumplir
+compromisos temporales definidos por el
+programador. El objetivo del mismo es diferente de
+un OS convencional.
+* Un RTOS se emplea cuando hay que administrar
+varias tareas simultáneas con plazos de tiempo
+estrictos.
 
-1
-2
-Serial.begin(112500);
-delay(1000);
-Luego, crearemos las tareas, con una llamada a la  función xTaskCreate . Los argumentos para esta función son los siguientes [1]:
+#Cómo se define un sistema de tiempo real?
+* Un STR está definido por:
+* Los eventos externos que debe atender.
+* La respuesta que debe producir ante estos eventos.
+* Los requerimientos de temporización de esas respuestas.
+* Los STR suaves se suelen diseñar como si fueran
+STR duros. Luego se da mayor prioridad a la
+atención de los eventos con compromisos
+temporales estrictos.
 
-TaskCode : en este argumento, necesitamos pasar un puntero a la función que implementará la tarea. Crearemos dos funciones, TaskOne y TaskTwo , que definiremos más adelante y las pasaremos en este argumento.
 
-TaskName : el nombre de la tarea, en una cadena. Usaremos "TaskOne" y "TaskTwo".
-
-StackDepth : el tamaño de la pila de la tarea, especificado como la cantidad de variables que puede contener (no la cantidad de bytes). No hay una manera simple de determinar el tamaño de la tarea [2], aunque se pueden hacer algunos cálculos. En este simple ejemplo, aprobaremos un valor que sea lo suficientemente grande.
-
-Parámetro : apunta a un parámetro que la función de tarea puede recibir. Necesita ser del tipo (void *) [2]. En este caso, por simplicidad del código, no lo usaremos, por lo que pasamos NULL en el argumento.
-
-Prioridad: prioridad de la tarea. Crearemos ambas tareas con la misma prioridad.
-
-TaskHandle: devuelve un descriptor de contexto que se puede utilizar para la referencia posterior de la tarea en llamadas a funciones (por ejemplo, para eliminar una tarea o cambiar su prioridad) [2]. Además, para este simple ejemplo, no vamos a usarlo, por lo que será NULL.
-
-Esta función devuelve  pdPASS en caso de éxito o un código de error que se puede ver aquí  [1]. Por ahora, asumiremos que las tareas se crearán sin ningún problema, por lo que no vamos a hacer ninguna comprobación de errores. Naturalmente, para una aplicación de escenario de caso real, tendríamos que hacer eso para confirmar que se crearon las tareas.
-
-Por lo tanto, compruebe abajo la función de configuración completa, ya con las llamadas cree las dos tareas diferentes.
