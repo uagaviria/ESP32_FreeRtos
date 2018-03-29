@@ -229,5 +229,21 @@ definición de secciones críticas
 * configUSE_CO_ROUTINES
 * #define INCLUDE_vTaskDelete 1
 
+# Tareas en FreeRTOS
+
+# Cómo es una tarea en FreeRTOS?
+* Citando a Richard Barry: “Las tareas se
+implementan con funciones de C. Lo único especial
+que tienen es su prototipo, que debe devolver void y
+recibir un puntero a void como parámetro”.
+* void vTareaEjemplo (void *parametros);
+* Cada tarea tiene su propio punto de entrada,
+sección de inicialización y lazo de control.
+* Las funciones de tarea (en adelante, tareas) en FreeRTOS NO DEBEN RETORNAR BAJO NINGÚN
+CONCEPTO. No deben incluir un return ni
+ejecutarse hasta la llave de cierre
+* Si una tarea deja de ser necesaria, puede eliminársela
+explícitamente. 
+
 
 
