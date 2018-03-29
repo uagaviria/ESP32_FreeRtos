@@ -272,21 +272,60 @@ del CPU, pero son administradas por el scheduler.
 # Código
 
 ```C++
-void vTask1( void *pvParameters )
-{
-//Punto de entrada - Seccion de inicializacion
-const char *pcTaskName = "Task 1 is running\n";
-volatile unsigned long ul;
-//Cuerpo de la tarea
-for( ;; )
-{
-vPrintString( pcTaskName ); // envía el string a la consola del IDE
-for( ul = 0; ul < mainDELAY_LOOP_COUNT; ul++ ) { }
+void setup() {
+
+  Serial.begin(112500);
+  delay(1000);
+
+  xTaskCreate(
+                    taskOne,          /* Task function. */
+                    "TaskOne",        /* String with name of task. */
+                    10000,            /* Stack size in words. */
+                    NULL,             /* Parameter passed as input of the task */
+                    1,                /* Priority of the task. */
+                    NULL);            /* Task handle. */
+
+  xTaskCreate(
+                    taskTwo,          /* Task function. */
+                    "TaskTwo",        /* String with name of task. */
+                    10000,            /* Stack size in words. */
+                    NULL,             /* Parameter passed as input of the task */
+                    1,                /* Priority of the task. */
+                    NULL);            /* Task handle. */
+
 }
-//La tarea NUNCA debe pasar de este punto, si lo hiciera debe ser
-eliminada
-vTaskDelete(NULL);
+
+void loop() {
+  delay(1000);
 }
+
+void taskOne( void * parameter )
+{
+
+    for( int i = 0;i<10;i++ ){
+
+        Serial.println("Hello from task 1");
+        delay(1000);
+    }
+
+    Serial.println("Ending task 1");
+    vTaskDelete( NULL );
+
+}
+
+void taskTwo( void * parameter)
+{
+
+    for( int i = 0;i<10;i++ ){
+
+        Serial.println("Hello from task 2");
+        delay(1000);
+    }
+    Serial.println("Ending task 2");
+    vTaskDelete( NULL );
+    Serial.println(taskCore);
+
+}}
 ```
 
 
