@@ -37,6 +37,8 @@ Esta función sirve para crear tareas.
 ```C++
 portBASE_TYPE xTaskCreate( pdTASK_CODE pvTaskCode, const signed char * const pcName, unsigned short usStackDepth, void *pvParameters, unsigned portBASE_TYPE uxPriority, xTaskHandle *pxCreatedTask);
 ```
+1. **Link automático -** Cualquier dirección explicita será convertida en un link.
+
 * pvTaskCode: es un puntero a la función que implementa la tarea
 * pcName: un nombre descriptivo de la tarea. Sólo sirver para debug
 usStackDepth: cada tarea tiene una pila de programa propia en el kernel, este parámetro determina el tamaño de la pila (en words).
