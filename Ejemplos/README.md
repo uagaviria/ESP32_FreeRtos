@@ -30,8 +30,8 @@ Cuando una tarea pasa de no funcionando a funcionando lo hace a partir de la últ
 
 La transición de no funcionando a funcionado se denomina "switched in" o "swapped in" y, al contrario, "switched out" o "swapped out". Estos cambios sólo los puede realizar el scheduler (programador de tareas) del FreeRTOS.
 
-Creación de Tareas
-Función de la API xTaskCreate()
+# Creación de Tareas
+# Función de la API xTaskCreate()
 Esta función es sirve para crear tareas.
 
 ```C++
