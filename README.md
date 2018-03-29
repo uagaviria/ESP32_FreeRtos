@@ -361,4 +361,25 @@ void loop() {
 }
 ```
 
+# Algoritmo de scheduling
+* Como elige el scheduler la tarea a ejecutar? Usa un algoritmo
+llamado Fixed priority preemptive scheduling
+* Fixed priority significa que el kernel NO MODIFICA las prioridades
+de las tareas (salvo en un caso particular que se verá más
+adelante).
+* Esto simplifica el análisis de ejecución del sistema, a la vez que
+transfiere al programador la total responsabilidad del cumplimiento
+de los plazos.
+* SIEMPRE ejecuta la tarea de mayor prioridad que esta en
+condiciones de ejecutarse.
+* Esto puede hacer que tareas de menor prioridad no reciban
+ningún tiempo de ejecución. A esto se le denomina “starvation”
+(hambreado) de la tarea.
+* Ya veremos cómo una aplicación deja de estar en condiciones de
+ejecutarse
+* Si la aplicación está en modo preemptive, al cabo de un
+tiempo el scheduler va a retirar la tarea en ejecución solo si
+hubiera una de igual prioridad en condiciones de
+ejecutarse.
+
 
