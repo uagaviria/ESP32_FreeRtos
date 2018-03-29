@@ -317,6 +317,8 @@ void Tarea2( void * parameter)
 }
 ```
 
+El siguiente código nos muestra que podemos correr nuestro programa en cualquiera de los dos nucleos del ESP32. y correr las tareas en los tiempos que mas nos convenga. los delay pueden ser modificados para esto. si corres el programa en consola te daras cuenta de lo que hablo.
+
 ```C++
 #include <Arduino.h>
 #if CONFIG_FREERTOS_UNICORE
