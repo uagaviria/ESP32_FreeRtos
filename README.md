@@ -319,6 +319,15 @@ void Tarea2( void * parameter)
 
 El siguiente código nos muestra que podemos correr nuestro programa en cualquiera de los dos nucleos del ESP32. y correr las tareas en los tiempos que mas nos convenga. los delay pueden ser modificados para esto. si corres el programa en consola te daras cuenta de lo que hablo.
 
+# Recursos de software # 1
+* void vTaskDelay( portTickType xTicksToDelay );
+* Produce una demora en la tarea que la llama. Cede el
+control del CPU mientras este tiempo no expira.
+* INCLUDE_vTaskDelay must be defined as 1 for this
+function to be available.
+* Uso:
+vTaskDelay (500 / portTICK_RATE_MS);
+
 ```C++
 #include <Arduino.h>
 const portTickType xDelay = 5000 / portTICK_RATE_MS;
