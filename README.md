@@ -245,5 +245,25 @@ ejecutarse hasta la llave de cierre
 * Si una tarea deja de ser necesaria, puede eliminársela
 explícitamente. 
 
+# Cómo es una tarea en FreeRTOS?
+* Las tareas tienen una prioridad de ejecución. 0 es la
+menor prioridad.
+* Se recomienda usar referencias a tskIDLE_PRIORITY (+1, +2,
+etc)
+* No hay límites a la cantidad de prioridades del sistema, pero se
+gasta RAM por cada una. Usar con cuidado.
+* Se pueden crear múltiples instancias de una misma
+función de tarea
+* Estas instancias pueden recibir un parámetro que las
+caracterice
+* IMPORTANTE: Cuando una tarea deja de estar en
+ejecución, las referencias a variables alojadas en su pila
+dejan de ser válidas.
+* Al ser funciones de C, se aplican las mismas reglas de
+visibilidad de variables => se puede compartir memoria
+entre las tareas usando variables globales.
+* En este caso se debe cuidar el acceso a este recurso
+compartido. 25 RTOS - Sistemas Embebidos 
+
 
 
