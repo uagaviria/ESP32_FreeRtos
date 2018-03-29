@@ -79,7 +79,7 @@ un OS convencional.
 varias tareas simultáneas con plazos de tiempo
 estrictos.
 
-#Cómo se define un sistema de tiempo real?
+# Cómo se define un sistema de tiempo real?
 * Un STR está definido por:
 * Los eventos externos que debe atender.
 * La respuesta que debe producir ante estos eventos.
@@ -88,5 +88,25 @@ estrictos.
 STR duros. Luego se da mayor prioridad a la
 atención de los eventos con compromisos
 temporales estrictos.
+
+3 ¿Por qué usar un RTOS?
+* Para cumplir con compromisos temporales estrictos
+* El RTOS ofrece funcionalidad para asegurar que una vez ocurrido
+un evento, la respuesta ocurra dentro de un tiempo acotado. Es
+importante aclarar que esto no lo hace por sí solo sino que brinda
+al programador herramientas para hacerlo de manera más
+sencilla que si no hubiera un RTOS.
+* Esto implica que una aplicación mal diseñada puede fallar en la atención
+de eventos aún cuando se use un RTOS.
+* Para no tener que manejar el tiempo “a mano”
+* El RTOS absorbe el manejo de temporizadores y esperas, de
+modo que hace más facil al programador el manejo del tiempo.
+* Tarea Idle
++ Cuando ninguna de las tareas requiere del procesador, el sistema
+ejecuta una tarea llamada idle u ociosa. Esto me permite
+fácilmente contabilizar el nivel de ocupación del CPU, poner al
+mismo en modo de bajo consumo o correr cualquier tarea que
+pudiera ser de utilidad para el sistema cuando no debe atender
+ninguno de sus eventos.
 
 
