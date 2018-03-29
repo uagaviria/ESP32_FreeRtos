@@ -271,19 +271,19 @@ del CPU, pero son administradas por el scheduler.
 
 # Código
 
-```ruby
+```C++
 void vTask1( void *pvParameters )
 {
-// Punto de entrada - Seccion de inicializacion
+//Punto de entrada - Seccion de inicializacion
 const char *pcTaskName = "Task 1 is running\n";
 volatile unsigned long ul;
-// Cuerpo de la tarea
+//Cuerpo de la tarea
 for( ;; )
 {
 vPrintString( pcTaskName ); // envía el string a la consola del IDE
 for( ul = 0; ul < mainDELAY_LOOP_COUNT; ul++ ) { }
 }
-// La tarea NUNCA debe pasar de este punto, si lo hiciera debe ser
+//La tarea NUNCA debe pasar de este punto, si lo hiciera debe ser
 eliminada
 vTaskDelete(NULL);
 }
