@@ -5,6 +5,7 @@ void FuncionTask (void *pvParametro);
 Cada Task es un pequeño programa, tiene un punto de entrada y se ejecuta eternamente debido a un bucle infinito.
 
 No se puede salir de un Task mediante un return, sino hay que eliminar el Task.
+```C++
 void FuncionTask (void *pvParametro)
 {
     //definición de variables
@@ -16,7 +17,7 @@ void FuncionTask (void *pvParametro)
     //como por aquí no puede pasar nunca, en caso de que lo haga se elimina la función
     vTaskDelete( NULL );
 }
-
+```
 Estados de las Tareas
 Cada aplicación consiste en varias Task.
 
