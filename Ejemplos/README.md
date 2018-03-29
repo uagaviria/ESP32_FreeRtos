@@ -34,8 +34,9 @@ Creación de Tareas
 Función de la API xTaskCreate()
 Esta función es sirve para crear tareas.
 
+```C++
 portBASE_TYPE xTaskCreate( pdTASK_CODE pvTaskCode, const signed char * const pcName, unsigned short usStackDepth, void *pvParameters, unsigned portBASE_TYPE uxPriority, xTaskHandle *pxCreatedTask);
-
+```
 pvTaskCode: es un puntero a la función que implementa la tarea
 pcName: un nombre descriptivo de la tarea. Sólo sirver para debug
 usStackDepth: cada tarea tiene una pila de programa propia en el kernel, este parámetro determina el tamaño de la pila (en words).
@@ -92,9 +93,9 @@ La función para introducir retardos es void vTaskDelay( portTickType xTicksToDel
 Si se quiere trabajar en ms en vez de ticks, tenemos la constante portTICK_RATE_MS y, dividiendo por ella, tendremos ms.
 
 Otra función es vTaskDelayUntil(), similar a vTaskDelay pero que determina el nº de ticks en el que va a dejar de estar bloqueada la tarea.
-
+```C++
 void vTaskDelayUntil(portTickType *pxPreviousWakeTime, portTickType xTimeIncrement);
-
+```
 pxPreviousWakeTime es el periodo en el que está. Se actualiza automáticamente.
 xTimeIncrement indica el número de tick que tienen que transcurrir para que salga de estado Blocked
 Estado Suspended
@@ -141,18 +142,18 @@ Función vTaskPrioritySet()
 La función vTaskPrioritySet se utiliza para cambiar la prioridad de las tareas una vez el programador de tareas se haya inicializado.
 
 Hay que tener en cuenta que esta función sólo se está disponible si el parámetro de configuración INCLUDE_vTaskPrioritySet del fichero FreeRTOSConfig.h está a uno.
-
+```C++
 void vTaskPrioritySet( xTaskHandle pxTask, unsigned portBASE_TYPE uxNewPriority);
-
+```
 pxTask es el enlace a la tarea que se quiere modificar es el parámetro pxCreatedTask de la función xTaskCreate(). Una tarea puede modificar su prioridad mandando un NULL en este parámetro
 uxNewPriority la prioridad que queremos poner. El valor es entre 0 y configMAX_PRIORITIES-1
 Función uxTaskPriorityGet()
 Sirve para averiguar el valor de la prioridad de la función.
 
 Hay que tener en cuenta que esta función sólo se está disponible si el parámetro de configuración INCLUDE_vTaskPriorityGet del fichero FreeRTOSConfig.h está a uno.
-
+```C++
 unsigned portBASE_TYPE uxTaskPriorityGet( xTaskHandle pxTask);
-
+```
 pxTask es el enlace a la tarea que se quiere modificar es el parámetro pxCreatedTask de la función xTaskCreate(). Una tarea puede modificar su prioridad mandando un NULL en este parámetro
 devuelve el valor de la prioridad
 Eliminación de Tareas
@@ -166,9 +167,9 @@ Las tareas eliminadas dejarán de existir y no podrán volver a entrar en estado R
 La tarea Idle es la responsable de liberar la memoria cuando se ejecuta esta función. Por eso, hay que tener en cuenta que podemos relentizar el sistema si llamamos muchas veces a esta función.
 
 Sólo la memoria usada por un el kernel se libera automáticamente, el resto se tiene que liberar explícitamente.
-
+```C++
 void vTaskDelete( xTaskHandle pxTaskToDelete);
-
+```
 pxTaskToDelete es el enlace a la tarea que se quiere modificar es el parámetro pxCreatedTask de la función xTaskCreate(). Una tarea puede modificar su prioridad mandando un NULL en este parámetro.
 Algoritmo del Planificador de tareas
 Priorizar la programación preferente
