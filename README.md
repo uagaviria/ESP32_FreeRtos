@@ -328,6 +328,21 @@ function to be available.
 * Uso:
 vTaskDelay (500 / portTICK_RATE_MS);
 
+# Recursos de software 2
+* void vTaskDelayUntil( portTickType
+*pxPreviousWakeTime, portTickType xTimeIncrement );
+* INCLUDE_vTaskDelayUntil must be defined as 1 for this
+function to be available.
+* Asegura un tiempo constante entre sucesivos llamados a esta
+función.
+* Cada vez que se la llama actualiza *pxPreviousWakeTime
+* Uso:
+portTickType xLastWakeTime;
+xLastWakeTime = xTaskGetTickCount();
+for( ;; ) {
+vTaskDelayUntil( &xLastWakeTime, xFrequency );
+} 
+
 ```C++
 #include <Arduino.h>
 const portTickType xDelay = 5000 / portTICK_RATE_MS;
